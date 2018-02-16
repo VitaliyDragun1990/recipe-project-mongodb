@@ -38,9 +38,9 @@ public class UnitOfMeasureServiceImplTest {
         Set<UnitOfMeasure> units = new HashSet<>();
 
         UnitOfMeasure unit1 = new UnitOfMeasure();
-        unit1.setId(1L);
+        unit1.setId("1");
         UnitOfMeasure unit2 = new UnitOfMeasure();
-        unit2.setId(2L);
+        unit2.setId("2");
 
         units.add(unit1);
         units.add(unit2);

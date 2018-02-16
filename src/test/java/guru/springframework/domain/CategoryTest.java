@@ -16,11 +16,11 @@ public class CategoryTest {
 
     @Test
     public void getId() {
-        Long idValue = 4L;
+        String idValue = "4";
 
         category.setId(idValue);
 
-//        assertEquals(4L, category.getId());
+        assertEquals(idValue, category.getId());
     }
 
     @Test

@@ -14,8 +14,8 @@ public class IngredientToIngredientCommandTest {
 
     private static final BigDecimal AMOUNT = new BigDecimal("1");
     private static final String DESCRIPTION = "Cheeseburger";
-    private static final Long UOM_ID = 2L;
-    private static final Long ID_VALUE = 1L;
+    private static final String UOM_ID = "2";
+    private static final String ID_VALUE = "1";
 
 
     private IngredientToIngredientCommand converter;
