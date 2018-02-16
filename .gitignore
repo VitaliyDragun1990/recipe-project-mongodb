@@ -24,6 +24,5 @@ dist/
 nbdist/
 .nb-gradle/
 /recipe-project-mongodb.iml
-gradle/
 
 out/
