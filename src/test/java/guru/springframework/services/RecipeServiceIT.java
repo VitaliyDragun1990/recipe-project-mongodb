@@ -1,10 +1,14 @@
 package guru.springframework.services;
 
+import guru.springframework.bootstrap.RecipeBootstrap;
 import guru.springframework.commands.RecipeCommand;
 import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
+import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
+import guru.springframework.repositories.UnitOfMeasureRepository;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,8 +33,22 @@ public class RecipeServiceIT {
     @Autowired
     private RecipeToRecipeCommand recipeToRecipeCommand;
 
-    @Ignore
-    @Transactional
+    @Autowired
+    CategoryRepository categoryRepository;
+    @Autowired
+    private UnitOfMeasureRepository unitOfMeasureRepository;
+
+    @Before
+    public void setUp() throws Exception {
+
+        recipeRepository.deleteAll();
+        unitOfMeasureRepository.deleteAll();
+        categoryRepository.deleteAll();
+
+        RecipeBootstrap bootstrap = new RecipeBootstrap(categoryRepository, recipeRepository, unitOfMeasureRepository);
+        bootstrap.onApplicationEvent(null);
+    }
+
     @Test
     public void testSaveOfDescription() throws Exception {
         // given

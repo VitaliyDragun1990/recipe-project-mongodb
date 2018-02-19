@@ -82,9 +82,8 @@ public class IngredientController {
         IngredientCommand savedCommand = ingredientService.saveIngredientCommand(command);
 
         log.debug("Saved recipe with id: " + savedCommand.getRecipeId());
-        log.debug("Saved ingredient with id: " + savedCommand.getId());
 
-        return "redirect:/recipe/" + savedCommand.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
+        return "redirect:/recipe/" + command.getRecipeId() + "/ingredient/" + savedCommand.getId() + "/show";
     }
 
     @GetMapping("/recipe/{recipeId}/ingredient/{ingredientId}/delete")

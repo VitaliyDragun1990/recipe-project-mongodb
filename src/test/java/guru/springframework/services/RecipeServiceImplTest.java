@@ -11,9 +11,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -68,7 +66,7 @@ public class RecipeServiceImplTest {
     @Test
     public void getRecipesTest() {
         Recipe recipe = new Recipe();
-        Set<Recipe> recipesData = new HashSet<>();
+        List<Recipe> recipesData = new ArrayList<>();
         recipesData.add(recipe);
 
         when(recipeRepository.findAll()).thenReturn(recipesData);

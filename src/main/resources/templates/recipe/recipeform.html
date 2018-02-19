@@ -149,14 +149,17 @@
                                     <h1 class="panel-title">Ingredients</h1>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-default" href="#" role="button">Edit</a>
+                                    <a class="btn btn-default"
+                                       th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" href="#" role="button">
+                                        View
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <ul>
+                                    <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
                                         <li th:remove="all">1 Cup of milk</li>
                                         <li th:remove="all">1 Teaspoon of chocolate</li>
                                         <li th:each="ingredient : ${recipe.ingredients}"
@@ -165,6 +168,15 @@
                                             ' ' + ingredient.description}">1 Teaspoon of sugar
                                         </li>
                                     </ul>
+                                    <div th:each="ingredientEach, idx : ${recipe.ingredients}">
+                                        <input type="hidden" th:field="*{ingredients[__${idx.index}__].id}">
+                                        <input type="hidden" th:field="*{ingredients[__${idx.index}__].description}">
+                                        <input type="hidden" th:field="*{ingredients[__${idx.index}__].amount}">
+                                        <input type="hidden" th:field="*{ingredients[__${idx.index}__].uom.id}">
+                                    </div>
+                                    <div th:each="catEach, idx : ${recipe.categories}">
+                                        <input type="hidden" th:field="*{categories[__${idx.index}__].id}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
